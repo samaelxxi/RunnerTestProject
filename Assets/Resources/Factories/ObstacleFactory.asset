@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b6344aca77f5f4d80d6bfed28e81a9, type: 3}
+  m_Name: ObstacleFactory
+  m_EditorClassIdentifier: 
+  obstacles:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 8614318768641863113, guid: 48be646cf50400f4987e13447348ad1b,
+        type: 3}
+    - Key: 1
+      Value: {fileID: 5347366835149784310, guid: d993aebff82834b4db60c810514c2bd1,
+        type: 3}
+    - Key: 2
+      Value: {fileID: -8244169730929020749, guid: 766cf638cdaa8e34388e362520d585d2,
+        type: 3}
+    - Key: 3
+      Value: {fileID: -7692985009370161211, guid: a416352e4006d6c4988a8cdfaedbf156,
+        type: 3}

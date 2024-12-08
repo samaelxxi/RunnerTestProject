@@ -12,18 +12,31 @@ namespace RunnerGame.Level
         [Serializable]
         public struct FruitData
         {
-            public GameObject FruitPrefab;
+            public Fruit.FruitType FruitType;
             public float FruitScore;
             public float FruitProbability;
         }
 
         [field: SerializeField, Min(1)] public float LevelLength { get; private set; }
-        [field: SerializeField] public float ReferenceObjectPositionOffset { get; private set; }
+        [field: SerializeField, Min(1)] public float LevelWidth { get; private set; }
+        [field: SerializeField] public float ReferenceObjectRoadOffset { get; private set; }
 
-        [field: Space(5)]
+        [field: SerializeField, Min(0)] public int StartEmptySegments { get; private set; }
+
+        [field: Header("Road")]
+        [field: SerializeField, Min(0)] public int NoItemsSegments { get; private set; }
         [field: SerializeField] public GameObject RoadSegmentPrefab { get; private set; }
-        [field: SerializeField] public float RoadSegmentLength { get; private set; }
+        [field: SerializeField, Min(1)] public float RoadSegmentLength { get; private set; }
+        [field: SerializeField, Min(0)] public int MaxItemsPerSegment { get; private set; }
+
+        [field: Header("Fruits")]
+        [field: SerializeField] public BinomialDistribution FruitDistribution { get; private set; }
         [field: SerializeField] public List<FruitData> Fruits { get; private set; }
+
+        [field: Header("Obstacles")]
         [field: SerializeField] public List<GameObject> ObstaclePrefabs { get; private set; }
+        [field: SerializeField] public BinomialDistribution StartObstacleDistribution { get; private set; }
+        [field: SerializeField, Range(0, 0.1f)] public float ObstacleProbabilityAcceleration { get; private set; }
+        [field: SerializeField, Range(0, 1)] public float MaxObstacleProbability { get; private set; }
     }
 }

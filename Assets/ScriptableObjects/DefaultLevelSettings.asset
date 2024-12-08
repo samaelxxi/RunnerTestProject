@@ -15,3 +15,4 @@ MonoBehaviour:
   <LevelGenerationSettings>k__BackingField: {fileID: 11400000, guid: 2a24e78da553e6a44a91d3e8c01017e5,
     type: 2}
   <PlayerStartSpeed>k__BackingField: 1
+  <LevelWidth>k__BackingField: 9.5

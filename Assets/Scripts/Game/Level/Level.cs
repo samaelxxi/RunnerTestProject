@@ -28,8 +28,21 @@ namespace RunnerGame.Level
 
         public void SetPlayer(Player player)
         {
+            player.SetHorizontalLimit(levelSettings.LevelGenerationSettings.LevelWidth / 2.0f);
             levelGenerator.SetReferenceObject(player.transform);
             levelGenerator.InitGenerate();
+        }
+
+
+        void OnDrawGizmosSelected()
+        {
+            if (levelSettings != null)
+            {
+                Gizmos.color = Color.green;
+                float width = levelSettings.LevelGenerationSettings.LevelWidth / 2.0f;
+                Gizmos.DrawLine(transform.position.SetX(transform.position.x - width),
+                                transform.position.SetX(transform.position.x + width));
+            }
         }
     }
 }

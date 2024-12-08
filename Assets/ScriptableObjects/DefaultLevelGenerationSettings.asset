@@ -12,10 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798737d9823d3804cbf5be550a9bac30, type: 3}
   m_Name: DefaultLevelGenerationSettings
   m_EditorClassIdentifier: 
-  <LevelLength>k__BackingField: 70
-  <ReferenceObjectPositionOffset>k__BackingField: -10
+  <LevelLength>k__BackingField: 80
+  <LevelWidth>k__BackingField: 19
+  <ReferenceObjectRoadOffset>k__BackingField: -10
+  <StartEmptySegments>k__BackingField: 7
+  <NoItemsSegments>k__BackingField: 2
   <RoadSegmentPrefab>k__BackingField: {fileID: 1430252468341948564, guid: 6a8e4a6ee08c5664383ea676e37aa892,
     type: 3}
   <RoadSegmentLength>k__BackingField: 5
-  <Fruits>k__BackingField: []
-  <ObstaclePrefabs>k__BackingField: []
+  <MaxItemsPerSegment>k__BackingField: 3
+  <FruitDistribution>k__BackingField:
+    Trials: 3
+    Probability: 0.35
+  <Fruits>k__BackingField:
+  - FruitPrefab: {fileID: 8354685046385187024, guid: 5c5439a68e9dd384fa9e0fd48b00708c,
+      type: 3}
+    FruitScore: 100
+    FruitProbability: 0.6
+  - FruitPrefab: {fileID: 3158764129087798752, guid: e1a46862c81d0694ba55d9e1897470a9,
+      type: 3}
+    FruitScore: 200
+    FruitProbability: 0.3
+  - FruitPrefab: {fileID: 2364289449877849228, guid: 3a08cee80de029e46b13923a894ce918,
+      type: 3}
+    FruitScore: 400
+    FruitProbability: 0.1
+  <ObstaclePrefabs>k__BackingField:
+  - {fileID: 6349791536559977666, guid: 48be646cf50400f4987e13447348ad1b, type: 3}
+  - {fileID: 6498148740698220896, guid: d993aebff82834b4db60c810514c2bd1, type: 3}
+  - {fileID: 4501616278338125527, guid: 766cf638cdaa8e34388e362520d585d2, type: 3}
+  - {fileID: 4603047465175664281, guid: a416352e4006d6c4988a8cdfaedbf156, type: 3}
+  <StartObstacleDistribution>k__BackingField:
+    Trials: 3
+    Probability: 0.05
+  <ObstacleProbabilityAcceleration>k__BackingField: 0.005
+  <MaxObstacleProbability>k__BackingField: 0.4

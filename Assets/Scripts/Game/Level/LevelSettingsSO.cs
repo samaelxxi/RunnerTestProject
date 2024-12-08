@@ -15,7 +15,6 @@ namespace RunnerGame.Level
         [field: SerializeField, Min(1)] 
         public float PlayerStartSpeed { get; private set; }
 
-        [field: SerializeField, Min(1)]
-        public float LevelWidth { get; private set; }
+
     }
 }

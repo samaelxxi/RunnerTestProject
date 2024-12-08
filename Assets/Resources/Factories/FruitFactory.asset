@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8287dcff7d4bb4b954e5ecf1d41b11, type: 3}
+  m_Name: FruitFactory
+  m_EditorClassIdentifier: 
+  fruits:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 1900058948693664891, guid: e1a46862c81d0694ba55d9e1897470a9,
+        type: 3}
+    - Key: 1
+      Value: {fileID: 4790070208095617355, guid: 5c5439a68e9dd384fa9e0fd48b00708c,
+        type: 3}
+    - Key: 2
+      Value: {fileID: 1245199165606747415, guid: 3a08cee80de029e46b13923a894ce918,
+        type: 3}

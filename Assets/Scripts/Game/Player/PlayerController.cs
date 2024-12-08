@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody _rigidbody;
     float _rightInput;
+    float _horizontalLimit;
 
 
     void Awake()
@@ -37,6 +38,11 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    public void SetHorizontalLimit(float limit)
+    {
+        _horizontalLimit = limit;
+    }
+
     void GetMoveInput()
     {
         _rightInput = Input.GetAxis("Horizontal");
@@ -52,9 +58,9 @@ public class PlayerController : MonoBehaviour
     {
         float rightDelta = _rightInput * horizontalSpeed * Time.fixedDeltaTime;
         float forwardDelta = forwardSpeed * Time.fixedDeltaTime;
-        Debug.Log(forwardDelta);
-        var newPos = transform.position + rightDelta * transform.right 
+        var newPos = transform.position + rightDelta   * transform.right 
                                         + forwardDelta * transform.forward;
+        newPos.x = Mathf.Clamp(newPos.x, -_horizontalLimit, _horizontalLimit);
 
         _rigidbody.MovePosition(newPos);
     }
