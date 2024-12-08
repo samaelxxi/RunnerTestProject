@@ -18,6 +18,5 @@ public static class GameInitializer
     {
         ServiceLocator.RegisterSO<FruitFactory>("Factories/FruitFactory");
         ServiceLocator.RegisterSO<ObstacleFactory>("Factories/ObstacleFactory");
-
     }
 }

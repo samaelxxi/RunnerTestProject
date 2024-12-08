@@ -4,76 +4,78 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+namespace RunnerGame.Game
 {
-    // TODO move to SO?
-    [SerializeField] float forwardSpeed;
-    [SerializeField] float forwardAcceleration;
-    [SerializeField] float forwardMaxSpeed;
-    [SerializeField] float horizontalSpeed;
-
-    public bool ShouldRun { get; private set; }
-    public float Speed => ShouldRun ? forwardSpeed : 0;
-
-    Rigidbody _rigidbody;
-    float _rightInput;
-    float _horizontalLimit;
-
-
-    void Awake()
+    [RequireComponent(typeof(Rigidbody))]
+    public class PlayerController : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+        [SerializeField] PlayerControllerSettingsSO settings;
 
-    void Update()
-    {
-        GetMoveInput();
-    }
+        float _forwardSpeed;
 
-    public void StopRunning()
-    {
-        ShouldRun = false;
-        forwardSpeed = 0;
-    }
+        public bool ShouldRun { get; private set; }
+        public float Speed => ShouldRun ? _forwardSpeed : 0;
 
-    public void StartRunning()
-    {
-        ShouldRun = true;
-    }
+        Rigidbody _rigidbody;
+        float _rightInput;
+        float _horizontalLimit;
 
-    void FixedUpdate()
-    {
-        if (!ShouldRun) return;
 
-        UpdateSpeed();
-        Move();
-    }
+        void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+            _forwardSpeed = settings.StartForwardSpeed;
+        }
 
-    public void SetHorizontalLimit(float limit)
-    {
-        _horizontalLimit = limit;
-    }
+        void Update()
+        {
+            GetMoveInput();
+        }
 
-    void GetMoveInput()
-    {
-        _rightInput = Input.GetAxis("Horizontal");
-    }
+        public void StopRunning()
+        {
+            ShouldRun = false;
+            _forwardSpeed = 0;
+        }
 
-    void UpdateSpeed()
-    {
-        forwardSpeed = Mathf.Clamp(forwardSpeed + forwardAcceleration * Time.fixedDeltaTime, 
-                                   0, forwardMaxSpeed);
-    }
+        public void StartRunning()
+        {
+            ShouldRun = true;
+        }
 
-    void Move()
-    {
-        float rightDelta = _rightInput * horizontalSpeed * Time.fixedDeltaTime;
-        float forwardDelta = forwardSpeed * Time.fixedDeltaTime;
-        var newPos = transform.position + rightDelta   * transform.right 
-                                        + forwardDelta * transform.forward;
-        newPos.x = Mathf.Clamp(newPos.x, -_horizontalLimit, _horizontalLimit);
+        void FixedUpdate()
+        {
+            if (!ShouldRun) return;
 
-        _rigidbody.MovePosition(newPos);
+            UpdateSpeed();
+            Move();
+        }
+
+        public void SetHorizontalLimit(float limit)
+        {
+            _horizontalLimit = limit;
+        }
+
+        void GetMoveInput()
+        {
+            _rightInput = Input.GetAxis("Horizontal");
+        }
+
+        void UpdateSpeed()
+        {
+            _forwardSpeed = Mathf.Clamp(_forwardSpeed + settings.ForwardAcceleration * Time.fixedDeltaTime, 
+                                    0, settings.ForwardMaxSpeed);
+        }
+
+        void Move()
+        {
+            float rightDelta = _rightInput * settings.HorizontalSpeed * Time.fixedDeltaTime;
+            float forwardDelta = _forwardSpeed * Time.fixedDeltaTime;
+            var newPos = transform.position + rightDelta   * transform.right 
+                                            + forwardDelta * transform.forward;
+            newPos.x = Mathf.Clamp(newPos.x, -_horizontalLimit, _horizontalLimit);
+
+            _rigidbody.MovePosition(newPos);
+        }
     }
 }

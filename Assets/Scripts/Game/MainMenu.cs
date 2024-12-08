@@ -1,8 +1,7 @@
 using System.Linq;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using RunnerGame.SaveSystem;
+using RunnerGame.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,6 +10,9 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         records.SetupPlayerRecords();
+
+        ServiceLocator.Get<FruitFactory>().ReleaseAll();
+        ServiceLocator.Get<ObstacleFactory>().ReleaseAll();
     }
 
     public void StartGame()

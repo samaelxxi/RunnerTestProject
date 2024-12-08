@@ -4,48 +4,52 @@ using System.Collections.Generic;
 using RunnerGame.Level;
 using UnityEngine;
 
-[SelectionBase]
-public class Player : MonoBehaviour
+
+namespace RunnerGame.Game
 {
-    [SerializeField] PlayerController controller;
-    [SerializeField] Animator animator;
-
-    public event Action<Fruit> OnFruitCollected;
-    public event Action OnDeath;
-
-    static readonly int SpeedHash = Animator.StringToHash("Speed_f");
-
-    public void SetHorizontalLimit(float limit)
+    [SelectionBase]
+    public class Player : MonoBehaviour
     {
-        controller.SetHorizontalLimit(limit);
-    }
+        [SerializeField] PlayerController controller;
+        [SerializeField] Animator animator;
 
-    void Start()
-    {
-        controller.StartRunning();
-    }
+        public event Action<Fruit> OnFruitCollected;
+        public event Action OnDeath;
 
-    void Update()
-    {
-        animator.SetFloat(SpeedHash, controller.Speed);
-    }
+        static readonly int SpeedHash = Animator.StringToHash("Speed_f");
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<Fruit>(out var fruit) && !fruit.IsCollected)
+        public void SetHorizontalLimit(float limit)
         {
-            fruit.Collect();
-            OnFruitCollected?.Invoke(fruit);
+            controller.SetHorizontalLimit(limit);
         }
-        else
-        {
-            Die();
-        }
-    }
 
-    public void Die()
-    {
-        controller.StopRunning();
-        OnDeath?.Invoke();
+        void Start()
+        {
+            controller.StartRunning();
+        }
+
+        void Update()
+        {
+            animator.SetFloat(SpeedHash, controller.Speed);
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent<Fruit>(out var fruit) && !fruit.IsCollected)
+            {
+                fruit.Collect();
+                OnFruitCollected?.Invoke(fruit);
+            }
+            else
+            {
+                Die();
+            }
+        }
+
+        public void Die()
+        {
+            controller.StopRunning();
+            OnDeath?.Invoke();
+        }
     }
 }

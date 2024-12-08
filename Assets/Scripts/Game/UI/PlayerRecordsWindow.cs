@@ -5,33 +5,37 @@ using RunnerGame.SaveSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerRecordsWindow : MonoBehaviour
+
+namespace RunnerGame.UI
 {
-    [SerializeField] Transform recordsParent;
-    [SerializeField] PlayerRecordEntry recordPrefab;
-    [SerializeField] ScrollRect scrollRect;
-
-    public void SetupPlayerRecords()
+    public class PlayerRecordsWindow : MonoBehaviour
     {
-        StartCoroutine(SetupPlayerRecordsCoroutine());
-    }
+        [SerializeField] Transform recordsParent;
+        [SerializeField] PlayerRecordEntry recordPrefab;
+        [SerializeField] ScrollRect scrollRect;
 
-    IEnumerator SetupPlayerRecordsCoroutine()
-    {
-        var saveService = ServiceLocator.Get<SaveService>();
-
-        yield return new WaitUntil(() => saveService.IsLoaded);
-
-        var recordsSaveable = saveService.GetSaveable<PlayerRecordsSaveable>() as PlayerRecordsSaveable;
-        var records = recordsSaveable.Records();
-        var sortedRecords = records.OrderBy(record => record.TotalScore).Reverse();
-
-        foreach (var record in sortedRecords)
+        public void SetupPlayerRecords()
         {
-            var entry = Instantiate(recordPrefab, recordsParent);
-            entry.SetupEntry(record);
+            StartCoroutine(SetupPlayerRecordsCoroutine());
         }
-        Canvas.ForceUpdateCanvases();
-        scrollRect.verticalNormalizedPosition = 1;
+
+        IEnumerator SetupPlayerRecordsCoroutine()
+        {
+            var saveService = ServiceLocator.Get<SaveService>();
+
+            yield return new WaitUntil(() => saveService.IsLoaded);
+
+            var recordsSaveable = saveService.GetSaveable<PlayerRecordsSaveable>() as PlayerRecordsSaveable;
+            var records = recordsSaveable.Records();
+            var sortedRecords = records.OrderBy(record => record.TotalScore).Reverse();
+
+            foreach (var record in sortedRecords)
+            {
+                var entry = Instantiate(recordPrefab, recordsParent);
+                entry.SetupEntry(record);
+            }
+            Canvas.ForceUpdateCanvases();
+            scrollRect.verticalNormalizedPosition = 1;
+        }
     }
 }

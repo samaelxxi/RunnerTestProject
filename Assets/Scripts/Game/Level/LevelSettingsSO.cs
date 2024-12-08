@@ -13,9 +13,6 @@ namespace RunnerGame.Level
         public LevelGenerationSettingsSO LevelGenerationSettings { get; private set; }
 
 
-        [field: SerializeField, Min(1)] 
-        public float PlayerStartSpeed { get; private set; }
-
         [field: SerializeField]
         public SerializedDictionary<Fruit.FruitType, int> FruitScores { get; private set; }
     }

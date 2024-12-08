@@ -22,7 +22,6 @@ namespace RunnerGame.SaveSystem
 
         public void AddNewRecord(PlayerRecordData record)
         {
-            Debug.Log("Added new record");
             _records.Add(record);
         }
 
