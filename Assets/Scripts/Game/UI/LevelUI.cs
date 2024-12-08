@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using TMPro;
 using UnityEngine;
 
 public class LevelUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] LevelScoreBar scoreBar;
+    [SerializeField] GameOverPopup gameOverPopup;
 
-    // Update is called once per frame
-    void Update()
+    public void Init()
     {
-        
+        scoreBar.Init();
     }
 }

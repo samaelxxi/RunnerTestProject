@@ -25,16 +25,13 @@ MonoBehaviour:
     Trials: 3
     Probability: 0.35
   <Fruits>k__BackingField:
-  - FruitPrefab: {fileID: 8354685046385187024, guid: 5c5439a68e9dd384fa9e0fd48b00708c,
-      type: 3}
+  - FruitType: 0
     FruitScore: 100
     FruitProbability: 0.6
-  - FruitPrefab: {fileID: 3158764129087798752, guid: e1a46862c81d0694ba55d9e1897470a9,
-      type: 3}
+  - FruitType: 1
     FruitScore: 200
     FruitProbability: 0.3
-  - FruitPrefab: {fileID: 2364289449877849228, guid: 3a08cee80de029e46b13923a894ce918,
-      type: 3}
+  - FruitType: 2
     FruitScore: 400
     FruitProbability: 0.1
   <ObstaclePrefabs>k__BackingField:

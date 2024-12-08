@@ -24,11 +24,8 @@ public class Player : MonoBehaviour
         controller.SetHorizontalLimit(limit);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Obstacle"))
-        {
-            
-        }
+        controller.ShouldRun = false;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
 
@@ -15,6 +16,7 @@ namespace RunnerGame.Level
         [field: SerializeField, Min(1)] 
         public float PlayerStartSpeed { get; private set; }
 
-
+        [field: SerializeField]
+        public SerializedDictionary<Fruit.FruitType, int> FruitScores { get; private set; }
     }
 }

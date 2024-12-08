@@ -16,6 +16,7 @@ namespace RunnerGame.Level
         [SerializeField] FruitType type;
 
         public event Action OnFruitCollected;
+        public event Action OnFruitDissapeared;
 
         private bool _isCollected;
 
@@ -31,7 +32,7 @@ namespace RunnerGame.Level
         {
             if (_isCollected) return;
 
-            transform.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InOutSine);
+            transform.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InOutSine).OnComplete(() => OnFruitDissapeared?.Invoke());
             _isCollected = true;
         }
 

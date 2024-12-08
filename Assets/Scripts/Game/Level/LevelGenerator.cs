@@ -138,7 +138,6 @@ namespace RunnerGame.Level
             int numObstacles = _obstacleDistribution.Sample();
             int numFruits = _generationSettings.FruitDistribution.Sample();
             int totalItems = numObstacles + numFruits;
-            Debug.Log($"{numObstacles} {numFruits}");
 
             while (totalItems > _generationSettings.MaxItemsPerSegment)
             {
@@ -185,7 +184,6 @@ namespace RunnerGame.Level
             Fruit.FruitType fruitToCreate = GetRandomFruitType();
 
             var newFruit = ServiceLocator.Get<FruitFactory>().GetFruit(fruitToCreate);
-            newFruit.Fruit.Spawn();
             newFruit.transform.position = position;
             _fruits.Add(newFruit);
         }

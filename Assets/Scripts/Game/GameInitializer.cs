@@ -9,6 +9,8 @@ public static class GameInitializer
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Initialize()
     {
+        var game = Game.Instance;  // init singleton
+
         InitializeServices();
     }
 
@@ -16,5 +18,6 @@ public static class GameInitializer
     {
         ServiceLocator.RegisterSO<FruitFactory>("Factories/FruitFactory");
         ServiceLocator.RegisterSO<ObstacleFactory>("Factories/ObstacleFactory");
+
     }
 }

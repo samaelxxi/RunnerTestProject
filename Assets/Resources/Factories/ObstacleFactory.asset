@@ -15,14 +15,14 @@ MonoBehaviour:
   obstacles:
     _serializedList:
     - Key: 0
-      Value: {fileID: 8614318768641863113, guid: 48be646cf50400f4987e13447348ad1b,
+      Value: {fileID: 8535001642152222701, guid: 0f2a73169852a6045b1fbbcf456ae741,
         type: 3}
     - Key: 1
-      Value: {fileID: 5347366835149784310, guid: d993aebff82834b4db60c810514c2bd1,
+      Value: {fileID: 5022230108368942731, guid: f02f47158f792e24a9663982f5056537,
         type: 3}
     - Key: 2
-      Value: {fileID: -8244169730929020749, guid: 766cf638cdaa8e34388e362520d585d2,
+      Value: {fileID: 4477410294101172498, guid: 6e00230e1bb77224caab34a9d68bc276,
         type: 3}
     - Key: 3
-      Value: {fileID: -7692985009370161211, guid: a416352e4006d6c4988a8cdfaedbf156,
+      Value: {fileID: 6525423026124500289, guid: 37d61c02edbed0444997e9b96fec4d98,
         type: 3}

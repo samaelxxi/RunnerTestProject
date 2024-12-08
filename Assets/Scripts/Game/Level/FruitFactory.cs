@@ -11,10 +11,19 @@ public class FruitFactory : Factory<FruitType, FruitPoolable>, Services.IInitial
 {
     [SerializeField] SerializedDictionary<FruitType, FruitPoolable> fruits;
 
-    public FruitPoolable GetFruit(Fruit.FruitType type)
+    public FruitPoolable GetFruit(FruitType type)
     {
         var fruit = _pools[type].Get();
+        fruit.Fruit.Spawn();
         return fruit;
+    }
+
+    protected override FruitPoolable CreateObject(FruitType key)
+    {
+        var obj = base.CreateObject(key);
+        obj.Fruit.OnFruitDissapeared += () => obj.Release();
+
+        return obj;
     }
 
     public void Initialize()

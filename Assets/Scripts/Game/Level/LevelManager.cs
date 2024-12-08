@@ -14,6 +14,7 @@ namespace RunnerGame.Level
         void Start()
         {
             level.SetPlayer(player);
+            ui.Init();
         }
     }
 }

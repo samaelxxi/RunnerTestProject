@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    // TODO move to SO?
     [SerializeField] float forwardSpeed;
     [SerializeField] float forwardAcceleration;
     [SerializeField] float forwardMaxSpeed;
