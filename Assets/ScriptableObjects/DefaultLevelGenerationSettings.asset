@@ -34,13 +34,11 @@ MonoBehaviour:
   - FruitType: 2
     FruitScore: 400
     FruitProbability: 0.1
-  <ObstaclePrefabs>k__BackingField:
-  - {fileID: 6349791536559977666, guid: 48be646cf50400f4987e13447348ad1b, type: 3}
-  - {fileID: 6498148740698220896, guid: d993aebff82834b4db60c810514c2bd1, type: 3}
-  - {fileID: 4501616278338125527, guid: 766cf638cdaa8e34388e362520d585d2, type: 3}
-  - {fileID: 4603047465175664281, guid: a416352e4006d6c4988a8cdfaedbf156, type: 3}
   <StartObstacleDistribution>k__BackingField:
     Trials: 3
     Probability: 0.05
   <ObstacleProbabilityAcceleration>k__BackingField: 0.005
-  <MaxObstacleProbability>k__BackingField: 0.4
+  <EnvironmentObjects>k__BackingField:
+  - {fileID: 100000, guid: 74978b6b36516b04b92f6ec6b3b0898d, type: 3}
+  - {fileID: 100000, guid: 04339706bd57d0e4ca629c1c3ef52dfb, type: 3}
+  - {fileID: 100000, guid: 2ef0797da60407348b9b34c8739ce696, type: 3}

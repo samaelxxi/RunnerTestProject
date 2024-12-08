@@ -34,9 +34,10 @@ namespace RunnerGame.Level
         [field: SerializeField] public List<FruitData> Fruits { get; private set; }
 
         [field: Header("Obstacles")]
-        [field: SerializeField] public List<GameObject> ObstaclePrefabs { get; private set; }
         [field: SerializeField] public BinomialDistribution StartObstacleDistribution { get; private set; }
         [field: SerializeField, Range(0, 0.1f)] public float ObstacleProbabilityAcceleration { get; private set; }
-        [field: SerializeField, Range(0, 1)] public float MaxObstacleProbability { get; private set; }
+
+
+        [field: SerializeField] public List<GameObject> EnvironmentObjects { get; private set; }
     }
 }

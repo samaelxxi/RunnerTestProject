@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using DesignPatterns;
-using UnavinarML.General;
 using UnityEngine;
 using UnityEngine.Pool;
 using Random = UnityEngine.Random;
@@ -15,6 +14,7 @@ namespace RunnerGame.Level
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField] Transform levelParent;
+        [SerializeField] EnvironmentGenerator env;
 
         LevelGenerationSettingsSO _generationSettings;
 
@@ -30,12 +30,14 @@ namespace RunnerGame.Level
         float _lastGC;
         int _lastSegmentIdx;
 
+
         void Awake()
         {
             if (levelParent == null)
                 levelParent = transform.parent;
 
             _roadParent = GameObjectExtensions.NewGameObjectAsChild("Road", levelParent).transform;
+            env.SetSettings(_generationSettings);
         }
 
         void Update()
@@ -45,6 +47,8 @@ namespace RunnerGame.Level
             _obstacleDistribution.Probability += _generationSettings.ObstacleProbabilityAcceleration * Time.deltaTime;
 
             CollectGarbage();
+
+            env.GenerateIfNeeded(_referenceObject.position.z);
         }
 
         void CollectGarbage()
