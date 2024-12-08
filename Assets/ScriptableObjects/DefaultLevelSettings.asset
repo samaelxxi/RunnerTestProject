@@ -15,4 +15,11 @@ MonoBehaviour:
   <LevelGenerationSettings>k__BackingField: {fileID: 11400000, guid: 2a24e78da553e6a44a91d3e8c01017e5,
     type: 2}
   <PlayerStartSpeed>k__BackingField: 1
-  <LevelWidth>k__BackingField: 9.5
+  <FruitScores>k__BackingField:
+    _serializedList:
+    - Key: 0
+      Value: 100
+    - Key: 1
+      Value: 200
+    - Key: 2
+      Value: 400

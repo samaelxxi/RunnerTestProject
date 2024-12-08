@@ -5,16 +5,19 @@ using RunnerGame.Level;
 using TMPro;
 using UnityEngine;
 
-public class LevelScoreBar : MonoBehaviour
+namespace RunnerGame.UI
 {
-    [SerializeField] TMP_Text scoreText;
-    [SerializeField] SerializedDictionary<Fruit.FruitType, TMP_Text> fruitTexts;
-
-    public void Init()
+    public class LevelScoreBar : MonoBehaviour
     {
-        scoreText.text = "0";
+        [SerializeField] TMP_Text scoreText;
+        [SerializeField] SerializedDictionary<Fruit.FruitType, TMP_Text> fruitTexts;
 
-        foreach (var text in fruitTexts.Values)
-            text.text = "0";
+        public void SetLevelData(LevelData data)
+        {
+            scoreText.text = data.TotalScore.ToString();
+
+            foreach (var (fruit, count) in data.FruitsCollected)
+                fruitTexts[fruit].text = count.ToString();
+        }
     }
 }

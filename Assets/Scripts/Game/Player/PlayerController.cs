@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float forwardMaxSpeed;
     [SerializeField] float horizontalSpeed;
 
-    public bool ShouldRun { get; set; }
+    public bool ShouldRun { get; private set; }
+    public float Speed => ShouldRun ? forwardSpeed : 0;
 
     Rigidbody _rigidbody;
     float _rightInput;
@@ -30,9 +31,19 @@ public class PlayerController : MonoBehaviour
         GetMoveInput();
     }
 
-    void FixedUpdate()
+    public void StopRunning()
+    {
+        ShouldRun = false;
+        forwardSpeed = 0;
+    }
+
+    public void StartRunning()
     {
         ShouldRun = true;
+    }
+
+    void FixedUpdate()
+    {
         if (!ShouldRun) return;
 
         UpdateSpeed();

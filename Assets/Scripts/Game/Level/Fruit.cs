@@ -12,13 +12,12 @@ namespace RunnerGame.Level
     {
         public enum FruitType { Red, Orange, Yellow }
 
-        [SerializeField] int score;
         [SerializeField] FruitType type;
 
-        public event Action OnFruitCollected;
         public event Action OnFruitDissapeared;
 
-        private bool _isCollected;
+        public FruitType Type => type;
+        public bool IsCollected { get; private set; }
 
         void Start()
         {
@@ -30,25 +29,16 @@ namespace RunnerGame.Level
 
         public void Collect()
         {
-            if (_isCollected) return;
+            if (IsCollected) return;
 
-            transform.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InOutSine).OnComplete(() => OnFruitDissapeared?.Invoke());
-            _isCollected = true;
+            transform.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InOutSine).OnComplete(() => OnFruitDissapeared?.Invoke());
+            IsCollected = true;
         }
 
         public void Spawn()
         {
             transform.localScale = Vector3.one;
-            _isCollected = false;
-        }
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.TryGetComponent<Player>(out var player))
-            {
-                OnFruitCollected?.Invoke();
-                Collect();
-            }
+            IsCollected = false;
         }
     }
 }

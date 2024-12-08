@@ -1,14 +1,25 @@
 
+using RunnerGame.Level;
 using TMPro;
 using UnityEngine;
 
-public class LevelUI : MonoBehaviour
+namespace RunnerGame.UI
 {
-    [SerializeField] LevelScoreBar scoreBar;
-    [SerializeField] GameOverPopup gameOverPopup;
-
-    public void Init()
+    public class LevelUI : MonoBehaviour
     {
-        scoreBar.Init();
+        [SerializeField] LevelScoreBar scoreBar;
+        [SerializeField] GameOverPopup gameOverPopup;
+
+
+        public void UpdateLevelData(LevelData data)
+        {
+            scoreBar.SetLevelData(data);
+        }
+
+        public void ShowGameOverPopup(int finalScore)
+        {
+            gameOverPopup.SetFinalScore(finalScore);
+            gameOverPopup.Show();
+        }
     }
 }

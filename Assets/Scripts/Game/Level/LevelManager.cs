@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using RunnerGame.SaveSystem;
+using RunnerGame.UI;
 using UnityEngine;
 
 
@@ -13,8 +16,30 @@ namespace RunnerGame.Level
 
         void Start()
         {
+            level.OnLevelDataChange += ui.UpdateLevelData;
             level.SetPlayer(player);
-            ui.Init();
+
+            player.OnDeath += EndGame;
+        }
+
+        void EndGame()
+        {
+            AddNewRecord();
+            ui.ShowGameOverPopup(level.Data.TotalScore);
+        }
+
+        void AddNewRecord()
+        {
+            PlayerRecordData record = new()
+            {
+                TotalScore = level.Data.TotalScore,
+                GameTime = Time.time - level.StartTime,
+                GameDate = DateTime.Now
+            };
+
+            var records = ServiceLocator.Get<SaveService>()
+                .GetSaveable<PlayerRecordsSaveable>() as PlayerRecordsSaveable;
+            records.AddNewRecord(record);
         }
     }
 }

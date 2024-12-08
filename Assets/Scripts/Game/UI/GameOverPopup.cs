@@ -4,19 +4,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameOverPopup : Popup
+namespace RunnerGame.UI
 {
-    [SerializeField] TMP_Text gameOverScore;
-
-    public event Action OnExitClicked;
-
-    public void SetFinalScore(int finalScore)
+    public class GameOverPopup : Popup
     {
-        gameOverScore.text = finalScore.ToString();
-    }
+        [SerializeField] TMP_Text gameOverScore;
 
-    public void ExitGame()
-    {
-        OnExitClicked?.Invoke();
+
+        public void SetFinalScore(int finalScore)
+        {
+            gameOverScore.text = finalScore.ToString();
+        }
+
+        public void ExitGame()
+        {
+            ServiceLocator.Get<SceneTransitionManager>().StartTransition("MainMenu");
+        }
     }
 }

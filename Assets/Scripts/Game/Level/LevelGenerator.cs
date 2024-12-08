@@ -65,10 +65,12 @@ namespace RunnerGame.Level
                 List<FruitPoolable> toRemove2 = new();
                 foreach (var obj in _fruits)
                 {
-                    if (obj.transform.position.z < _referenceObject.transform.position.z + _generationSettings.ReferenceObjectRoadOffset)
+                    if (!obj.Fruit.gameObject.activeSelf ||
+                            obj.transform.position.z < _referenceObject.transform.position.z + _generationSettings.ReferenceObjectRoadOffset)
                     {
                         toRemove2.Add(obj);
-                        obj.Release();
+                        if (obj.Fruit.gameObject.activeSelf)
+                            obj.Release();
                     }
                 }
                 toRemove2.ForEach(obj => _fruits.Remove(obj));

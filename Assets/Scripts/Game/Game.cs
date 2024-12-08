@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using DesignPatterns.Singleton;
-using UnityEngine;
+using RunnerGame.SaveSystem;
 
 public class Game : Singleton<Game>
 {
